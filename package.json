@@ -2,6 +2,7 @@
   "name": "face-detection",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": "https://github.com/mlab817/ridemap-face-scanner",
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
