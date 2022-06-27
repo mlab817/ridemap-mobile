@@ -9,11 +9,12 @@ of passengers' faces counted through face detection.
 relies instead upon the faceID created when a face is detected by 
 the app's camera.`
 
-## Hardware and Software
+## Requirements
 
-1. Laravel for backend development
-2. React Native and Expo for mobile app development
-3. Smartphones with camera
+1. [Free Expo account](https://expo.dev/signup)
+2. Laravel for backend development
+3. React Native and Expo for mobile app development
+4. Smartphones with camera
 
 The Laravel backend for the Ridemap already supports this app. The
 endpoint for submission of face detection is `/api/faces`. The backend
