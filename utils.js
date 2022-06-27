@@ -77,13 +77,15 @@ export const fetchStations = async () => {
 /**
  * Handle submission of faces data to backend
  *
- * @param facesToSubmit
  * @returns {Promise<*>}
+ * @param scansToSubmit
  */
-export const submitFaces = async (facesToSubmit) => {
+export const submitData = async (scansToSubmit) => {
+    console.log(`scansToSubmit: `, scansToSubmit)
+
     try {
-        const response = await api.post('/faces', {
-            faces: facesToSubmit
+        const response = await api.post('/qrs', {
+            scans: scansToSubmit
         })
 
         return response.data.success

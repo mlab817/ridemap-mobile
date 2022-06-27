@@ -4,7 +4,7 @@
 
 import React, {useContext, useEffect, useState} from 'react';
 import {
-    ActivityIndicator,
+    ActivityIndicator, Alert,
     Dimensions, Image,
     SafeAreaView,
     StyleSheet,
@@ -14,8 +14,10 @@ import {
 } from 'react-native';
 import * as FaceDetector from "expo-face-detector";
 import { Camera, CameraType } from "expo-camera";
-import {fetchStations, submitFaces} from "../utils";
+import {fetchStations} from "../utils";
 import {AuthContext} from "../contexts/auth.context";
+import * as BarcodeScanner from 'expo-barcode-scanner'
+import {ScansContext} from "../contexts/scans.context";
 
 /**
  * You can fine tune the face detector settings here
@@ -39,11 +41,11 @@ const HomeScreen = () => {
 
     const [hasPermission, setHasPermission] = useState(null);
 
-    const [faces, setFaces] = useState([])
-
-    const [lastFace, setLastFace] = useState(null)
+    const [scanned, setScanned] = useState(false)
 
     const [type, setType] = useState(CameraType.back);
+
+    const { scans, addScan, handleSubmitData } = useContext(ScansContext)
 
     // fetch stations
     useEffect(() => {
@@ -65,38 +67,38 @@ const HomeScreen = () => {
     }, []);
 
     // handle face detection and send to server
-    const handleFacesDetected = async ({ faces }) => {
-        if (!faces.length) {
-            setFaces([])
-            return
+    const handleScanned = ({ type, data }) => {
+        setScanned(true)
+
+        console.log(`type: `, type)
+        console.log(`barcodetype: `, BarcodeScanner.Constants.BarCodeType.qr)
+
+        if (type === BarcodeScanner.Constants.BarCodeType.qr) {
+            const newScan = {
+                station_id: stationId,
+                qr_code: data,
+                scanned_at: (new Date()).toLocaleString('en-US', {
+                    hour12: false
+                })
+            }
+
+            console.log(newScan)
+
+            addScan(newScan)
+
+            Alert.alert('QR Scanned', data, [
+                {
+                    text: 'Scan Again',
+                    onPress: () => setScanned(false)
+                }
+            ],{
+                cancelable: true,
+                onDismiss: () => setScanned(false)
+            })
+        } else {
+            console.log('not qr')
         }
-
-        setFaces(faces)
-        setLastFace(Math.max(...faces.map(f => f.faceID)))
-
-        try {
-
-            // filter faceID to exclude duplicates
-            // from previous detection
-            const facesToSubmit = faces
-                .filter(f => f.faceID > lastFace)
-                .map(f => (
-                    {
-                        station_id: stationId,
-                        face_id: f.faceID
-                    })
-                )
-
-            const response = await submitFaces(facesToSubmit)
-
-            console.log('/api/faces: ', response)
-        } catch (e) {
-            console.log(`error in handleFacesDetected: `, e)
-        }
-    };
-
-    console.log(`deviceId: `, deviceId)
-    console.log(isAuthenticated)
+    }
 
     // if loading, show loading screen
     if (loading) {
@@ -195,32 +197,36 @@ const HomeScreen = () => {
                 fontSize: 36
             }}>RIDEMAP</Text>
 
-            <Camera
-                // other props
-                style={styles.camera}
-                onFacesDetected={handleFacesDetected}
-                type={type}
-                faceDetectorSettings={faceDetectorSettings}
-            />
-
             {
-                faces.length > 0
-                && faces.map(({ bounds, faceID }, index) => {
-                    return (<View key={index} style={{
-                        borderWidth: 2,
-                        borderColor: 'yellow',
-                        position: 'absolute',
-                        top: bounds.origin.y + 100, // add 100 for the top adjustment
-                        left: bounds.origin.x,
-                        height: bounds.size.height,
-                        width: bounds.size.width
-                    }}>
-                        <Text style={{color: 'yellow'}}>{faceID}</Text>
-                    </View>)
-                })
+                !scanned
+                  ? <Camera
+                      onBarCodeScanned={scanned ? undefined : handleScanned}
+                      style={styles.camera}
+                      type={type} />
+                  : <View style={[styles.camera,{backgroundColor:'#1f1f1f'}]} />
             }
 
-            <Text style={{ marginTop: 10, fontSize: 24 }}>{stations.find(station => station.id === stationId).name}</Text>
+
+            <Text style={{ marginTop: 10, fontSize: 24 }}>
+                {stations.find(station => station.id === stationId).name}
+            </Text>
+
+            <View style={{
+                flexDirection: 'row',
+                marginTop: 10
+            }}>
+                <Text>
+                    QRs scanned: {scans.length}
+                </Text>
+
+                <TouchableOpacity onPress={() => handleSubmitData()}>
+                    <Text style={{
+                        marginLeft: 20
+                    }}>
+                        Manual Submit
+                    </Text>
+                </TouchableOpacity>
+            </View>
 
             <TouchableOpacity style={{
                 marginTop: 10
