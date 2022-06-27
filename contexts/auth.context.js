@@ -5,7 +5,7 @@
 import {createContext, useEffect, useState} from "react";
 import {Platform} from "react-native";
 import * as Application from "expo-application";
-import {deviceAuthentication, deviceCreate} from "../utils";
+import {deviceAuthentication} from "../utils";
 
 export const AuthContext = createContext({
     isAuthenticated: false,
@@ -40,11 +40,6 @@ export const AuthProvider = ({ children }) => {
             setLoading(true)
 
             console.log(`deviceId from login: `, deviceId)
-
-            // TODO: Testing only
-            const createDeviceSuccess = await deviceCreate(deviceId)
-
-            console.log(`createDeviceSuccess ${createDeviceSuccess}`)
 
             const loginSuccessful = await deviceAuthentication(deviceId)
 

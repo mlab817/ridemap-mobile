@@ -8,7 +8,7 @@ import * as SecureStore from 'expo-secure-store';
  * @type {AxiosInstance}
  */
 export const api = axios.create({
-    baseURL: 'https://ridemap-php.herokuapp.com/api'
+    baseURL: 'http://192.168.254.102:8000/api'
 })
 
 /**
@@ -38,12 +38,17 @@ api.interceptors.request.use(async (config) => {
 export const deviceAuthentication = async (deviceId) => {
     try {
         const response = await api.post('/device-auth', {
-            deviceId: deviceId
+            device_id: deviceId
         })
 
         console.log(`response: ${JSON.stringify(response.data.token)}`)
+
         // store token
-        await SecureStore.setItemAsync('RIDEMAP_TOKEN', response.data.token)
+        if (response.data.success) {
+            await SecureStore.setItemAsync('RIDEMAP_TOKEN', response.data.token)
+        } else {
+            return false
+        }
 
         return true
     } catch (e) {
@@ -84,25 +89,5 @@ export const submitFaces = async (facesToSubmit) => {
         return response.data.success
     } catch (e) {
         console.log(`error in submitFaces: `,e)
-    }
-}
-
-/**
- * Handle device registration
- *
- * @param deviceId
- * @returns {Promise<*>}
- */
-export const deviceCreate = async (deviceId) => {
-    try {
-        const response = await api.post('/device-register', {
-            device_id: deviceId
-        })
-
-        console.log('deviceCreate: ', response)
-
-        return response.data.success
-    } catch (e) {
-        console.log(`error in deviceCreate: `, e)
     }
 }

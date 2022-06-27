@@ -5,7 +5,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {
     ActivityIndicator,
-    Dimensions,
+    Dimensions, Image,
     SafeAreaView,
     StyleSheet,
     Text,
@@ -123,10 +123,24 @@ const HomeScreen = () => {
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <Text>INVALID DEVICE ID</Text>
+                <Text>DEVICE NOT REGISTERED</Text>
 
-                <Text>{deviceId}</Text>
-                <Text>Please contact LTFRB PUVSC PIU IT Unit</Text>
+                <Image style={{
+                    marginBottom: 10,
+                    marginTop: 10,
+                    height: 300,
+                    width: 300
+                }} source={{
+                    uri:`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${deviceId}`
+                }} />
+
+                <Text style={{
+                    marginTop: 10
+                }}>{deviceId}</Text>
+
+                <Text style={{
+                    marginTop: 10
+                }}>Provide this device ID to LTFRB PUVSC PIU IT Unit</Text>
             </SafeAreaView>
         )
     }
@@ -211,9 +225,7 @@ const HomeScreen = () => {
             <TouchableOpacity style={{
                 marginTop: 10
             }} onPress={() => setStationId(null)}>
-                <Text style={{
-                    color: 'red'
-                }}>Change Station</Text>
+                <Text>Change Station</Text>
             </TouchableOpacity>
         </View>
     )
