@@ -1,3 +1,7 @@
+/**
+ * This file handles device authentication.
+ */
+
 import {createContext, useEffect, useState} from "react";
 import {Platform} from "react-native";
 import * as Application from "expo-application";

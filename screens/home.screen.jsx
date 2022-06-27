@@ -1,3 +1,7 @@
+/**
+ * This is the only screen of the project.
+ */
+
 import React, {useContext, useEffect, useState} from 'react';
 import {
     ActivityIndicator,
@@ -10,8 +14,21 @@ import {
 } from 'react-native';
 import * as FaceDetector from "expo-face-detector";
 import { Camera, CameraType } from "expo-camera";
-import { api } from "../utils";
+import {fetchStations, submitFaces} from "../utils";
 import {AuthContext} from "../contexts/auth.context";
+
+/**
+ * You can fine tune the face detector settings here
+ *
+ * see https://docs.expo.dev/versions/latest/sdk/facedetector/#settings
+ */
+const faceDetectorSettings = {
+    mode: FaceDetector.FaceDetectorMode.accurate,
+    detectLandmarks: FaceDetector.FaceDetectorLandmarks.all,
+    runClassifications: FaceDetector.FaceDetectorClassifications.all,
+    minDetectionInterval: 500, // in milliseconds
+    tracking: true,
+}
 
 const HomeScreen = () => {
     const { deviceId, isAuthenticated, loading } = useContext(AuthContext)
@@ -30,13 +47,13 @@ const HomeScreen = () => {
 
     // fetch stations
     useEffect(() => {
-        const fetchStations = async () => {
-            const response = await api.get('/stations')
+        const onFetchStations = async () => {
+            const data = await fetchStations()
 
-            setStations(response.data)
+            setStations(data)
         }
 
-        fetchStations()
+        onFetchStations()
     }, [])
 
     // ask for camera permission
@@ -70,13 +87,11 @@ const HomeScreen = () => {
                     })
                 )
 
-            const response = await api.post('/faces', {
-                faces: facesToSubmit
-            })
+            const response = await submitFaces(facesToSubmit)
 
-            console.log('/api/faces: ', response.data.message)
+            console.log('/api/faces: ', response)
         } catch (e) {
-            console.log(e)
+            console.log(`error in handleFacesDetected: `, e)
         }
     };
 
@@ -171,13 +186,7 @@ const HomeScreen = () => {
                 style={styles.camera}
                 onFacesDetected={handleFacesDetected}
                 type={type}
-                faceDetectorSettings={{
-                    mode: FaceDetector.FaceDetectorMode.accurate,
-                    detectLandmarks: FaceDetector.FaceDetectorLandmarks.all,
-                    runClassifications: FaceDetector.FaceDetectorClassifications.all,
-                    minDetectionInterval: 1000,
-                    tracking: true,
-                }}
+                faceDetectorSettings={faceDetectorSettings}
             />
 
             {
@@ -197,7 +206,15 @@ const HomeScreen = () => {
                 })
             }
 
-            <Text style={{ marginTop: 10 }}>{stations.find(station => station.id === stationId).name}</Text>
+            <Text style={{ marginTop: 10, fontSize: 24 }}>{stations.find(station => station.id === stationId).name}</Text>
+
+            <TouchableOpacity style={{
+                marginTop: 10
+            }} onPress={() => setStationId(null)}>
+                <Text style={{
+                    color: 'red'
+                }}>Change Station</Text>
+            </TouchableOpacity>
         </View>
     )
 }
