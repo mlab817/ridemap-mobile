@@ -9,7 +9,11 @@ platform :ios, podfile_properties['ios.deploymentTarget'] || '12.0'
 install! 'cocoapods',
   :deterministic_uuids => false
 
+<<<<<<< HEAD
 target 'ridemapqr' do
+=======
+target 'ridemapcounter' do
+>>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3
   use_expo_modules!
   config = use_native_modules!
 

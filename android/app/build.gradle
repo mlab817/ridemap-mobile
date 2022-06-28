@@ -141,7 +141,11 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
+<<<<<<< HEAD
         applicationId 'com.mlab817.ridemapqr'
+=======
+        applicationId 'com.mlab817.ridemapcounter'
+>>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -163,7 +167,7 @@ android {
                     cppFlags "-std=c++17"
                     // Make sure this target name is the same you specify inside the
                     // src/main/jni/Android.mk file for the `LOCAL_MODULE` variable.
-                    targets "facedetection_appmodules"
+                    targets "ridemapcounter_appmodules"
 
                     // Fix for windows limit on number of character in file paths and in command lines
                     if (Os.isFamily(Os.FAMILY_WINDOWS)) {

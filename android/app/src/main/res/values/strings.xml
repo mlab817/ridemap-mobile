@@ -1,3 +1,7 @@
 <resources>
+<<<<<<< HEAD
   <string name="app_name">ridemap-qr</string>
+=======
+  <string name="app_name">ridemap-counter</string>
+>>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3
 </resources>
