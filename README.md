@@ -1,4 +1,4 @@
-# RIDEMAP: Passenger Count through Face Detection using Smartphone Camera
+# RIDEMAP: Passenger Count through QR Code Scanning
 
 ## Description
 
