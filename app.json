@@ -1,16 +1,10 @@
 {
   "expo": {
-    "name": "ridemap-qr",
-    "slug": "ridemap-qr",
+    "name": "face-detection",
+    "slug": "face-detection",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "android": {
-      "package": "com.mlab817.ridemapqr"
-    },
-    "ios": {
-      "bundleIdentifier": "com.mlab817.ridemapqr"
-    }
+    ]
   }
 }
