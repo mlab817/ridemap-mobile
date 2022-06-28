@@ -1,8 +1,4 @@
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/newarchitecture/modules/MainApplicationTurboModuleManagerDelegate.java
 package com.mlab817.ridemapqr.newarchitecture.modules;
-=======
-package com.mlab817.ridemapcounter.newarchitecture.modules;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/newarchitecture/modules/MainApplicationTurboModuleManagerDelegate.java
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
@@ -45,7 +41,7 @@ public class MainApplicationTurboModuleManagerDelegate
     if (!sIsSoLibraryLoaded) {
       // If you change the name of your application .so file in the Android.mk file,
       // make sure you update the name here as well.
-      SoLoader.loadLibrary("ridemapcounter_appmodules");
+      SoLoader.loadLibrary("facedetection_appmodules");
       sIsSoLibraryLoaded = true;
     }
   }

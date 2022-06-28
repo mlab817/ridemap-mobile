@@ -1,8 +1,4 @@
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/newarchitecture/components/MainComponentsRegistry.java
 package com.mlab817.ridemapqr.newarchitecture.components;
-=======
-package com.mlab817.ridemapcounter.newarchitecture.components;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/newarchitecture/components/MainComponentsRegistry.java
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

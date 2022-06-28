@@ -1,8 +1,4 @@
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/MainActivity.java
 package com.mlab817.ridemapqr;
-=======
-package com.mlab817.ridemapcounter;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/MainActivity.java
 
 import android.os.Build;
 import android.os.Bundle;

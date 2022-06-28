@@ -11,10 +11,6 @@
     <key>EXUpdatesSDKVersion</key>
     <string>45.0.0</string>
     <key>EXUpdatesURL</key>
-<<<<<<< HEAD:ios/ridemapqr/Supporting/Expo.plist
     <string>https://exp.host/@mlab817/ridemap-qr</string>
-=======
-    <string>https://exp.host/@mlab817/ridemap-counter</string>
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:ios/ridemapcounter/Supporting/Expo.plist
   </dict>
 </plist>

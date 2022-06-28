@@ -1,8 +1,4 @@
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/MainApplication.java
 package com.mlab817.ridemapqr;
-=======
-package com.mlab817.ridemapcounter;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/MainApplication.java
 
 import android.app.Application;
 import android.content.Context;
@@ -16,11 +12,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/MainApplication.java
 import com.mlab817.ridemapqr.newarchitecture.MainApplicationReactNativeHost;
-=======
-import com.mlab817.ridemapcounter.newarchitecture.MainApplicationReactNativeHost;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/MainApplication.java
 
 import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
@@ -96,11 +88,7 @@ public class MainApplication extends Application implements ReactApplication {
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/MainApplication.java
         Class<?> aClass = Class.forName("com.mlab817.ridemapqr.ReactNativeFlipper");
-=======
-        Class<?> aClass = Class.forName("com.mlab817.ridemapcounter.ReactNativeFlipper");
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/MainApplication.java
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

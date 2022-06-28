@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 rootProject.name = 'ridemap-qr'
-=======
-rootProject.name = 'ridemap-counter'
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3
 
 apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
 useExpoModules()

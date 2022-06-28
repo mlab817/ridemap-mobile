@@ -14,11 +14,7 @@ class MainApplicationTurboModuleManagerDelegate
  public:
   // Adapt it to the package you used for your Java class.
   static constexpr auto kJavaDescriptor =
-<<<<<<< HEAD
       "Lcom/mlab817/ridemapqr/newarchitecture/modules/MainApplicationTurboModuleManagerDelegate;";
-=======
-      "Lcom/mlab817/ridemapcounter/newarchitecture/modules/MainApplicationTurboModuleManagerDelegate;";
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3
 
   static jni::local_ref<jhybriddata> initHybrid(jni::alias_ref<jhybridobject>);
 

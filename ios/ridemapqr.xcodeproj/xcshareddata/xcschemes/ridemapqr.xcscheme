@@ -15,15 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-<<<<<<< HEAD:ios/ridemapqr.xcodeproj/xcshareddata/xcschemes/ridemapqr.xcscheme
                BuildableName = "ridemapqr.app"
                BlueprintName = "ridemapqr"
                ReferencedContainer = "container:ridemapqr.xcodeproj">
-=======
-               BuildableName = "ridemapcounter.app"
-               BlueprintName = "ridemapcounter"
-               ReferencedContainer = "container:ridemapcounter.xcodeproj">
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:ios/ridemapcounter.xcodeproj/xcshareddata/xcschemes/ridemapcounter.xcscheme
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -39,15 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-<<<<<<< HEAD:ios/ridemapqr.xcodeproj/xcshareddata/xcschemes/ridemapqr.xcscheme
                BuildableName = "ridemapqrTests.xctest"
                BlueprintName = "ridemapqrTests"
                ReferencedContainer = "container:ridemapqr.xcodeproj">
-=======
-               BuildableName = "ridemapcounterTests.xctest"
-               BlueprintName = "ridemapcounterTests"
-               ReferencedContainer = "container:ridemapcounter.xcodeproj">
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:ios/ridemapcounter.xcodeproj/xcshareddata/xcschemes/ridemapcounter.xcscheme
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -67,15 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-<<<<<<< HEAD:ios/ridemapqr.xcodeproj/xcshareddata/xcschemes/ridemapqr.xcscheme
             BuildableName = "ridemapqr.app"
             BlueprintName = "ridemapqr"
             ReferencedContainer = "container:ridemapqr.xcodeproj">
-=======
-            BuildableName = "ridemapcounter.app"
-            BlueprintName = "ridemapcounter"
-            ReferencedContainer = "container:ridemapcounter.xcodeproj">
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:ios/ridemapcounter.xcodeproj/xcshareddata/xcschemes/ridemapcounter.xcscheme
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -90,15 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-<<<<<<< HEAD:ios/ridemapqr.xcodeproj/xcshareddata/xcschemes/ridemapqr.xcscheme
             BuildableName = "ridemapqr.app"
             BlueprintName = "ridemapqr"
             ReferencedContainer = "container:ridemapqr.xcodeproj">
-=======
-            BuildableName = "ridemapcounter.app"
-            BlueprintName = "ridemapcounter"
-            ReferencedContainer = "container:ridemapcounter.xcodeproj">
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:ios/ridemapcounter.xcodeproj/xcshareddata/xcschemes/ridemapcounter.xcscheme
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

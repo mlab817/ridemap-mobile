@@ -1,8 +1,4 @@
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/newarchitecture/MainApplicationReactNativeHost.java
 package com.mlab817.ridemapqr.newarchitecture;
-=======
-package com.mlab817.ridemapcounter.newarchitecture;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/newarchitecture/MainApplicationReactNativeHost.java
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -23,15 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-<<<<<<< HEAD:android/app/src/main/java/com/mlab817/ridemapqr/newarchitecture/MainApplicationReactNativeHost.java
 import com.mlab817.ridemapqr.BuildConfig;
 import com.mlab817.ridemapqr.newarchitecture.components.MainComponentsRegistry;
 import com.mlab817.ridemapqr.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
-=======
-import com.mlab817.ridemapcounter.BuildConfig;
-import com.mlab817.ridemapcounter.newarchitecture.components.MainComponentsRegistry;
-import com.mlab817.ridemapcounter.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/main/java/com/mlab817/ridemapcounter/newarchitecture/MainApplicationReactNativeHost.java
 import java.util.ArrayList;
 import java.util.List;
 

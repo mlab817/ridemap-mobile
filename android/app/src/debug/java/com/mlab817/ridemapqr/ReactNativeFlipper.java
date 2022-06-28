@@ -4,11 +4,7 @@
  * <p>This source code is licensed under the MIT license found in the LICENSE file in the root
  * directory of this source tree.
  */
-<<<<<<< HEAD:android/app/src/debug/java/com/mlab817/ridemapqr/ReactNativeFlipper.java
 package com.mlab817.ridemapqr;
-=======
-package com.mlab817.ridemapcounter;
->>>>>>> 87bece223ab04b78886b4c9be4569b8454e18ec3:android/app/src/debug/java/com/mlab817/ridemapcounter/ReactNativeFlipper.java
 
 import android.content.Context;
 import com.facebook.flipper.android.AndroidFlipperClient;
