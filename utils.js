@@ -8,7 +8,7 @@ import * as SecureStore from 'expo-secure-store';
  * @type {AxiosInstance}
  */
 export const api = axios.create({
-    baseURL: 'http://192.168.254.102:8000/api'
+    baseURL: 'https://ridemap.thedeveconomist.com/api'
 })
 
 /**
@@ -78,15 +78,13 @@ export const fetchStations = async () => {
  * Handle submission of faces data to backend
  *
  * @returns {Promise<*>}
- * @param scansToSubmit
+ * @param data
  */
-export const submitData = async (scansToSubmit) => {
-    console.log(`scansToSubmit: `, scansToSubmit)
+export const submitData = async (data) => {
+    console.log(`scansToSubmit: `, data)
 
     try {
-        const response = await api.post('/qrs', {
-            scans: scansToSubmit
-        })
+        const response = await api.post('/passenger-count', data)
 
         return response.data.success
     } catch (e) {

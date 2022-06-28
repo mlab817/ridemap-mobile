@@ -1,10 +1,16 @@
 {
   "expo": {
-    "name": "face-detection",
-    "slug": "face-detection",
+    "name": "ridemap-counter",
+    "slug": "ridemap-counter",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.mlab817.ridemapcounter"
+    },
+    "ios": {
+      "bundleIdentifier": "com.mlab817.ridemapcounter"
+    }
   }
 }
