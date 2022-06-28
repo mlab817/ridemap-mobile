@@ -1,4 +1,4 @@
-package com.facedetection;
+package com.mlab817.ridemapqr;
 
 import android.os.Build;
 import android.os.Bundle;

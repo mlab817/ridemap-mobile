@@ -1,4 +1,4 @@
-package com.facedetection.newarchitecture.modules;
+package com.mlab817.ridemapqr.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
