@@ -78,6 +78,48 @@ and [iOS](https://docs.expo.dev/versions/v45.0.0/sdk/application/#applicationget
 
 The app will send data for every batch of faces detected.
 
+## Table Structure
+
+### - users
+
+Stores data of users of the system
+
+| Attribute | Type      | Description                                            |
+|-----------|-----------|--------------------------------------------------------|
+| id        | int autoincrement  | Primary key of the table |
+| name      | varchar   | Name of the user                 |
+| email     | varchar   | Email of the user               |
+| email_verified_at     | timestamp   | Timestamp when the user validated their email              |
+| password  | varchar   | Hashed password of the user     |
+| device_id | varchar   | Device ID of the user               | |
+| created_at| timestamp | Timestamp when the record was saved in the database    |
+| updated_at| timestamp | Timestamp when the record was updated in the database  |
+
+### - stations
+
+Stores data of stations in EDSA Busway
+
+| Attribute | Type               | Description              |
+|-----------|--------------------|--------------------------|
+| id        | int autoincrement  | Primary key of the table |
+| name      | varchar            | Name of the station      |
+| created_at| timestamp | Timestamp when the record was saved in the database    |
+| updated_at| timestamp | Timestamp when the record was updated in the database  |
+
+### - passenger_qrs
+
+Stores data on scanned QR codes
+
+| Attribute | Type      | Description                                            |
+|-----------|-----------|--------------------------------------------------------|
+| id        | int autoincrement | Primary key of the table                 |
+| station_id| int       | Foreign key referencing stations table                 |
+| qr_code   | varchar   | String representation of QR code scanned               |
+| scanned_at| timestamp | Timestamp when the QR code was scanned                 |
+| user_id   | int       | Foreign key referencing users table    |
+| created_at| timestamp | Timestamp when the record was saved in the database    |
+| updated_at| timestamp | Timestamp when the record was updated in the database  |
+
 ## Limitations
 
 The accuracy of this app will depend on at least the following factors:
