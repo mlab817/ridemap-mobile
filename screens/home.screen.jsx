@@ -4,15 +4,16 @@
 
 import React, {useContext, useEffect, useState} from 'react';
 import {
-    ActivityIndicator, Alert,
-    Dimensions, Image,
+    ActivityIndicator,
+    Alert,
+    Dimensions,
+    Image,
     SafeAreaView,
     StyleSheet,
     Text,
     TouchableOpacity,
     View
 } from 'react-native';
-import * as FaceDetector from "expo-face-detector";
 import { Camera, CameraType } from "expo-camera";
 import {fetchStations} from "../utils";
 import {AuthContext} from "../contexts/auth.context";
