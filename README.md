@@ -42,12 +42,12 @@ Install the necessary tools:
 4. Install Expo Go in IOS/Android
 5. Install Git
 
-Follow the following steps to get set up:
+Follow the steps below to get set up:
 
 1. Clone this repository
 
 ```console
-git clone https://github.com/mlab817/ridemap-counter.git
+git clone https://github.com/mlab817/ridemap-qr.git
 ```
 
 2. Change directory to ridemap-counter
