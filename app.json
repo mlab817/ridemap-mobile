@@ -6,6 +6,11 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFCD00"
+    },
     "android": {
       "package": "com.mlab817.ridemapqr"
     },

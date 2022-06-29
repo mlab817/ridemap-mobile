@@ -19,19 +19,6 @@ import {AuthContext} from "../contexts/auth.context";
 import * as BarcodeScanner from 'expo-barcode-scanner'
 import {ScansContext} from "../contexts/scans.context";
 
-/**
- * You can fine tune the face detector settings here
- *
- * see https://docs.expo.dev/versions/latest/sdk/facedetector/#settings
- */
-const faceDetectorSettings = {
-    mode: FaceDetector.FaceDetectorMode.accurate,
-    detectLandmarks: FaceDetector.FaceDetectorLandmarks.all,
-    runClassifications: FaceDetector.FaceDetectorClassifications.all,
-    minDetectionInterval: 500, // in milliseconds
-    tracking: true,
-}
-
 const HomeScreen = () => {
     const { deviceId, isAuthenticated, loading } = useContext(AuthContext)
 
