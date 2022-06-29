@@ -17,23 +17,10 @@ the app's camera.`
 4. Smartphones with camera
 
 The Laravel backend for the Ridemap already supports this app. The
-endpoint for submission of face detection is `/api/faces`. The backend
-accepts an array of `faces` with the following attributes: `face_id`,
-`station_id`, and `scanned_at`. `device_id` is extracted from a token
+endpoint for submission of face detection is `/api/qrs`. The backend
+accepts an array of `faces` with the following attributes: `qr_code`,
+`station_id`, and `scanned_at`. `user_id` is extracted from a token
 used to authenticate the device.
-
-## Building the App
-
-Since this app has been created with [expo](expo.dev),
-the app can also be built with it through the
-[Expo Application Services](https://docs.expo.dev/eas/).
-To do this make sure that `eas-cli` is installed in your
-computer with `npm i -g eas-cli`. Then, in your app's root
-directory, just run `eas build` and follow the instruction.
-You can view the progress in [expo.dev](https://expo.dev/) 
-website, i.e. dashboard. Afterwards, you can download the 
-app bundle which you can distribute to users or submit to
-app / play store.
 
 __Important__: Do not forget to update the api configuration in the
 `utils.js` file to point to the url of the API of the backend. Specifically,
@@ -44,6 +31,85 @@ export const api = axios.create({
    baseURL: 'https://ridemap-php.herokuapp.com/api'
 })
 ```
+
+## Getting Started
+
+Install the necessary tools:
+
+1. Any IDE (Webstorm is preferred but you can also use Atom and VS Code)
+2. Install Nodejs
+3. Install Expo
+4. Install Expo Go in IOS/Android
+5. Install Git
+
+Follow the following steps to get set up:
+
+1. Clone this repository
+
+```console
+git clone https://github.com/mlab817/ridemap-counter.git
+```
+
+2. Change directory to ridemap-counter
+
+```console
+cd ridemap-counter
+```
+
+3. Install dependencies
+
+
+```console
+npm install
+```
+
+4. Update the API endpoint in utils.js file
+
+```javascript
+export const api = axios.create({
+   baseURL: 'https://ridemap-php.herokuapp.com/api'
+})
+```
+
+5. Start expo dev server
+
+
+```console
+expo start
+```
+
+Or
+
+```console
+expo r -c
+```
+
+The second command is used when you cannot connect your device to the webserver. 
+
+Follow the instructions in the CLI message to connect your simulator or physical device.
+
+## Building and Distributing the App
+
+To build the app, install the Expo Application Services.
+
+1. Create a free account in [Expo](https://expo.dev).
+2. Install eas-cli to use eas in command prompt and/or terminal.
+
+```console
+npm i -g eas-cli
+```
+
+3. From the root directory, run:
+
+```console
+eas build
+```
+
+Follow the on-screen instructions. You will find the android/ios bundles in your Expo account under Build menu, e.g. https://expo.dev/accounts/{accountName}/projects/ridemap-counter/builds. You may also integrate submission to Play Store
+and App Store.
+
+> Note: Unfortunately, to build IOS applications, you will need to apply and register to Apple Developer Program which 
+> costs $99 yearly. Android build is free and can be downloaded for distribution.
 
 ## Workflow
 
@@ -120,15 +186,29 @@ Stores data on scanned QR codes
 | created_at| timestamp | Timestamp when the record was saved in the database    |
 | updated_at| timestamp | Timestamp when the record was updated in the database  |
 
+## Screenshots
+
+| ![Splash Screen](https://user-images.githubusercontent.com/29625844/176331478-e042c273-ffab-4603-ad00-693382aa546d.png) | ![Device ID](https://user-images.githubusercontent.com/29625844/176331526-db90c6f2-a3cc-48e8-8fe2-ad5bf46f146f.png) |
+|:-------------:|:------------:|
+| ![Request Permission](https://user-images.githubusercontent.com/29625844/176331417-ba934b85-d0cd-4374-948d-7e13d8bcda61.png) | ![Select Station](https://user-images.githubusercontent.com/29625844/176332218-291c28f1-666c-4fdf-88b6-259fd7178f55.png) |
+| ![Scan QR](https://user-images.githubusercontent.com/29625844/176337597-8c434c90-82eb-420d-866f-73eaa26a6526.png) | |
+
+1. Screen 1 - Splash screen
+2. Screen 2 - QR Code for the Device ID which can be scanned to easily copy the device ID
+3. Screen 3 - Request permission to use camera
+4. Screen 4 - Select station where device is located
+5. Screen 5 - QR Scanner
+
+> Data is submitted for every 10 scans or can be triggered manually.
+
 ## Limitations
 
-The accuracy of this app will depend on at least the following factors:
+One major limitation for scanning QR code are the logistics involved with it. Since it multiplies
+the number of QR scans by as much as 50x per vehicle (for buses) compared to RAMA, this may take
+more than the assigned dwell time for vehicles (5s scan per passenger x 50 = 250s or 4 min 10s). 
+Average dwell time ranges from 1 - 1.5 mins. Further, there's a need to assign more inspectors to 
+operate the QR scanners, distribute QR codes, and collect them afterwards.
 
-1. Camera quality of the device
-2. Quality of the environment (placement of the device, lighting)
-3. Quality of targets (angle of the face, obstructions such as face masks/caps)
+## Author
 
-There is also the issue of duplication since the app does not use a
-backend to analyze facial features and eliminate duplicates. So if a 
-person takes too long in the queueing line, they can be scanned more than
-once.
+This app is developed by [Mark Lester Bolotaolo](https://github.com/mlab817).
