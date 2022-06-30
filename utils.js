@@ -124,7 +124,7 @@ export const submitCount = async (data) => {
 
         return success
     } catch (e) {
-        console.log(`error in submitFaces: `,e)
+        console.log(`error in submitCount: `,e)
 
         showToastMessage(e.message)
     }

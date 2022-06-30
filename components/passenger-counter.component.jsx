@@ -1,11 +1,11 @@
-import {Button, Keyboard, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View} from "react-native";
+import {Button, Keyboard, TextInput, TouchableWithoutFeedback, View} from "react-native";
 import Layout from "./layout.component";
 import {Fragment, useContext, useState} from "react";
 import {StationContext} from "../contexts/station.context";
 import {submitCount} from "../utils";
 
 const PassengerCounter = () => {
-  const { stationId, stations, setStationId } = useContext(StationContext)
+  const { stationId } = useContext(StationContext)
 
   const [passengersIn, setPassengersIn] = useState('')
 
@@ -20,8 +20,8 @@ const PassengerCounter = () => {
   const handleSubmit = async () => {
     const payload = {
       station_id: stationId,
-      passenger_in: parseInt(passengersIn),
-      passenger_out: parseInt(passengersOut),
+      passenger_in: parseInt(passengersIn ?? 0),
+      passenger_out: parseInt(passengersOut ?? 0),
       scanned_at: (new Date()).toLocaleString('en-US', {
         hour12: false
       })
@@ -40,8 +40,8 @@ const PassengerCounter = () => {
   }
 
   return (
-    <Layout>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <Layout>
         <Fragment>
 
           <View style={{
@@ -74,9 +74,10 @@ const PassengerCounter = () => {
           </View>
 
           <Button title="Submit" onPress={handleSubmit} />
+
         </Fragment>
-      </TouchableWithoutFeedback>
-    </Layout>
+      </Layout>
+    </TouchableWithoutFeedback>
   )
 }
 

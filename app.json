@@ -15,7 +15,7 @@
     },
     "android": {
       "package": "com.mlab817.ridemap",
-      "versionCode": 3
+      "versionCode": 5
     },
     "ios": {
       "bundleIdentifier": "com.mlab817.ridemap"
