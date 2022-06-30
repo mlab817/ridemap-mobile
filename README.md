@@ -43,13 +43,13 @@ Follow the steps below to get set up:
 1. Clone this repository
 
 ```console
-git clone https://github.com/mlab817/ridemap-qr.git
+git clone https://github.com/mlab817/ridemap-mobile.git
 ```
 
 2. Change directory to ridemap-counter
 
 ```console
-cd ridemap-counter
+cd ridemap-mobile
 ```
 
 3. Install dependencies
@@ -100,6 +100,8 @@ npm i -g eas-cli
 ```console
 eas build
 ```
+
+You can control the build configuration by editing the `eas.json` file. Open this [link](https://docs.expo.dev/build/eas-json/) for more information
 
 Follow the on-screen instructions. You will find the android/ios bundles in your Expo account under Build menu, e.g. https://expo.dev/accounts/{accountName}/projects/ridemap-counter/builds. You may also integrate submission to Play Store
 and App Store.
