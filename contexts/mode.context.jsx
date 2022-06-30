@@ -20,9 +20,12 @@ export const ModeProvider = ({ children }) => {
     setCurrentMode(modes[mode])
   }
 
+  const clearMode = () => setCurrentMode(null)
+
   const value = {
     currentMode,
-    handleSetCurrentMode
+    handleSetCurrentMode,
+    clearMode
   }
 
   return <ModeContext.Provider value={value}>{children}</ModeContext.Provider>

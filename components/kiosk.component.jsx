@@ -31,9 +31,13 @@ const Kiosk = () => {
 
   return (
     <Layout>
-      <Text style={{
-        fontSize: 16
-      }}>SELECT DESTINATION</Text>
+      <View style={{
+        alignItems: 'center'
+      }}>
+        <Text style={{
+          fontSize: 16
+        }}>SELECT DESTINATION</Text>
+      </View>
 
       <View style={{
         flexDirection: 'row',
@@ -66,10 +70,6 @@ const Kiosk = () => {
         }
       </View>
 
-      <Text style={{ marginTop: 5, fontSize: 24 }}>
-        {stations.find(station => station.id === stationId).name}
-      </Text>
-
       <View style={{
         flexDirection: 'row',
         justifyContent: 'space-around'
@@ -83,11 +83,6 @@ const Kiosk = () => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity onPress={() => setStationId(null)}>
-        <Text style={{
-          marginBottom: 10
-        }}>Change</Text>
-      </TouchableOpacity>
     </Layout>
   )
 }

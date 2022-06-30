@@ -100,21 +100,16 @@ const FaceDetect = () => {
         })
       }
 
-      <Text style={{
-        marginTop: 10
+      <View style={{
+        alignItems: 'center'
       }}>
-        Total: {lastFace ?? 0} faces detected
-      </Text>
+        <Text style={{
+          marginTop: 10
+        }}>
+          Total: {lastFace ?? 0} faces detected
+        </Text>
+      </View>
 
-      <Text style={{ marginTop: 10, fontSize: 24 }}>
-        {stations.find(station => station.id === stationId).name}
-      </Text>
-
-      <TouchableOpacity style={{
-        marginTop: 10
-      }} onPress={() => setStationId(null)}>
-        <Text>Change Station</Text>
-      </TouchableOpacity>
     </Layout>
   )
 }

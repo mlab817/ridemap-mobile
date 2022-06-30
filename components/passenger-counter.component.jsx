@@ -43,9 +43,6 @@ const PassengerCounter = () => {
     <Layout>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Fragment>
-          <Text style={{ marginTop: 10, fontSize: 24 }}>
-            {stations.find(station => station.id === stationId).name}
-          </Text>
 
           <View style={{
             flexDirection: 'row',
@@ -77,12 +74,6 @@ const PassengerCounter = () => {
           </View>
 
           <Button title="Submit" onPress={handleSubmit} />
-
-          <TouchableOpacity style={{
-            marginTop: 10
-          }} onPress={() => setStationId(null)}>
-            <Text>Change Station</Text>
-          </TouchableOpacity>
         </Fragment>
       </TouchableWithoutFeedback>
     </Layout>

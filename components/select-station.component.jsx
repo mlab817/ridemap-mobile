@@ -1,6 +1,7 @@
 import {ActivityIndicator, Text, TouchableOpacity, View} from "react-native";
 import {useContext} from "react";
 import {StationContext} from "../contexts/station.context";
+import Banner from "./banner.component";
 
 const SelectStation = () => {
   const { stations, setStationId, loading } = useContext(StationContext)
@@ -15,6 +16,8 @@ const SelectStation = () => {
       alignItems: 'center',
       justifyContent: 'center'
     }}>
+      <Banner />
+
       {
         loading
           ?

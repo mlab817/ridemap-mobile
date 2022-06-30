@@ -5,6 +5,7 @@ import {ScansContext} from "../contexts/scans.context";
 import * as BarcodeScanner from "expo-barcode-scanner";
 import {StationContext} from "../contexts/station.context";
 import styled from 'styled-components/native'
+import Layout from "./layout.component";
 
 const Spacer = styled(View)`
   flex-grow: 1;
@@ -20,11 +21,6 @@ const QrScanner = () => {
   const { stationId, stations, setStationId } = useContext(StationContext)
 
   const { scans, addScan, handleSubmitData } = useContext(ScansContext)
-
-  const handleResetStation = () => {
-    handleSubmitData()
-    setStationId(null)
-  }
 
   // ask for camera permission
   useEffect(() => {
@@ -86,76 +82,43 @@ const QrScanner = () => {
   }
 
   return (
-    (
-      <SafeAreaView style={styles.container}>
-        <Image source={require('../assets/images/banner.png')} style={styles.banner} />
+    <Layout>
 
-        <Spacer />
+      {
+        !scanned
+          ? <Camera
+            onBarCodeScanned={scanned ? undefined : handleScanned}
+            style={styles.camera}
+            type={type} />
+          : <View style={[styles.camera,{backgroundColor:'#1f1f1f'}]} />
+      }
 
-        {
-          !scanned
-            ? <Camera
-              onBarCodeScanned={scanned ? undefined : handleScanned}
-              style={styles.camera}
-              type={type} />
-            : <View style={[styles.camera,{backgroundColor:'#1f1f1f'}]} />
-        }
-
-        <Spacer />
-
-        <Text style={{ marginTop: 10, fontSize: 24 }}>
-          {stations.find(station => station.id === stationId).name}
+      <View style={{
+        justifyContent: 'center',
+        flexDirection: 'row',
+        marginTop: 10
+      }}>
+        <Text>
+          QRs scanned: {scans.length}
         </Text>
 
-        <Spacer />
-
-        <View style={{
-          flexDirection: 'row',
-          marginTop: 10
-        }}>
-          <Text>
-            QRs scanned: {scans.length}
+        <TouchableOpacity disabled={!scans.length} onPress={() => handleSubmitData()}>
+          <Text style={{
+            marginLeft: 20
+          }}>
+            Manual Submit
           </Text>
-
-          <TouchableOpacity onPress={() => handleSubmitData()}>
-            <Text style={{
-              marginLeft: 20
-            }}>
-              Manual Submit
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <Spacer />
-
-        <TouchableOpacity style={{
-          marginTop: 10,
-          marginBottom: 10
-        }} onPress={handleResetStation}>
-          <Text>Change Station</Text>
         </TouchableOpacity>
-      </SafeAreaView>
-    )
+      </View>
+
+    </Layout>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 10,
-    paddingBottom: 10
-  },
   camera: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height - 300,
-  },
-  banner: {
-    marginTop: 20,
-    width: 300,
-    height: 100,
-    resizeMode: 'contain'
   }
 });
 

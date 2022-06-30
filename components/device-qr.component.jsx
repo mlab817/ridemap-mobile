@@ -106,7 +106,6 @@ const DeviceQr = () => {
         </TouchableOpacity>
       </View>
 
-
     </SafeAreaView>
   )
 }
