@@ -1,22 +1,24 @@
 {
   "expo": {
     "name": "Ridemap",
-    "slug": "ridemap-qr",
+    "slug": "ridemap",
     "version": "1.0.0",
     "assetBundlePatterns": [
-      "**/*"
+      "**/*",
+      "assets/images/*"
     ],
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#FFCD00"
     },
     "android": {
-      "package": "com.mlab817.ridemapqr"
+      "package": "com.mlab817.ridemap",
+      "versionCode": 2
     },
     "ios": {
-      "bundleIdentifier": "com.mlab817.ridemapqr"
+      "bundleIdentifier": "com.mlab817.ridemap"
     },
     "plugins": [
       [

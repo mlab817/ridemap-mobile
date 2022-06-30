@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as SecureStore from 'expo-secure-store';
+import Toast from "react-native-root-toast";
 
 /**
  * Create axios instance to use in all requests
@@ -43,9 +44,11 @@ export const deviceAuthentication = async (deviceId) => {
 
         console.log(`response: ${JSON.stringify(response.data.token)}`)
 
+        const { success, token } = response.data
+
         // store token
-        if (response.data.success) {
-            await SecureStore.setItemAsync('RIDEMAP_TOKEN', response.data.token)
+        if (success) {
+            await SecureStore.setItemAsync('RIDEMAP_TOKEN', token)
         } else {
             return false
         }
@@ -53,6 +56,9 @@ export const deviceAuthentication = async (deviceId) => {
         return true
     } catch (e) {
         console.log(`error in device authentication: `, e)
+
+        showToastMessage(e.message)
+
         return false
     }
 }
@@ -80,7 +86,7 @@ export const fetchStations = async () => {
  * @returns {Promise<*>}
  * @param scansToSubmit
  */
-export const submitData = async (scansToSubmit) => {
+export const submitQrScans = async (scansToSubmit) => {
     console.log(`scansToSubmit: `, scansToSubmit)
 
     try {
@@ -88,8 +94,92 @@ export const submitData = async (scansToSubmit) => {
             scans: scansToSubmit
         })
 
-        return response.data.success
+        const { message, success } = response.data
+
+        showToastMessage(message)
+
+        return success
     } catch (e) {
         console.log(`error in submitFaces: `,e)
+
+        showToastMessage(e.message)
     }
+}
+
+/**
+ * Handle submission of faces data to backend
+ *
+ * @returns {Promise<*>}
+ * @param data
+ */
+export const submitCount = async (data) => {
+    console.log(`scansToSubmit: `, data)
+
+    try {
+        const response = await api.post('/passenger-count', data)
+
+        const { message, success } = response.data
+
+        showToastMessage(message)
+
+        return success
+    } catch (e) {
+        console.log(`error in submitFaces: `,e)
+
+        showToastMessage(e.message)
+    }
+}
+
+/**
+ * Handle submission of faces data to backend
+ *
+ * @returns {Promise<*>}
+ * @param passengers
+ */
+export const submitPassengers = async (passengers) => {
+    try {
+        const response = await api.post('/kiosks', {
+            passengers: passengers
+        })
+
+        const { success, message } = response.data
+
+        showToastMessage(message)
+
+        return success
+    } catch (e) {
+        console.log(`error in submitPassengers: `, e)
+
+        showToastMessage(e.message)
+    }
+}
+
+/**
+ * Handle submission of faces data to backend
+ *
+ * @param facesToSubmit
+ * @returns {Promise<*>}
+ */
+export const submitFaces = async (facesToSubmit) => {
+    try {
+        const response = await api.post('/faces', {
+            faces: facesToSubmit
+        })
+
+        const { message, success } = response.data
+
+        showToastMessage(message)
+
+        return success
+    } catch (e) {
+        console.log(`error in submitFaces: `, e)
+    }
+}
+
+const showToastMessage = (message) => {
+    Toast.show(message, {
+        duration: Toast.durations.SHORT,
+        position: Toast.positions.BOTTOM,
+        hideOnPress: true
+    })
 }

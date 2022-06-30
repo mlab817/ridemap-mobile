@@ -1,5 +1,5 @@
 import {createContext, useEffect, useState} from "react";
-import {submitData} from "../utils";
+import { submitQrScans} from "../utils";
 
 export const ScansContext = createContext({
     scans: [],
@@ -19,7 +19,7 @@ export const ScansProvider = ({ children }) => {
 
         clearScans()
 
-        await submitData(scansToSubmit)
+        await submitQrScans(scansToSubmit)
     }
 
     const clearScans = () => setScans([])

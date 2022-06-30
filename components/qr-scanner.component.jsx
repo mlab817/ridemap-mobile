@@ -88,7 +88,7 @@ const QrScanner = () => {
   return (
     (
       <SafeAreaView style={styles.container}>
-        <Image source={require('../assets/banner.png')} style={styles.banner} />
+        <Image source={require('../assets/images/banner.png')} style={styles.banner} />
 
         <Spacer />
 
