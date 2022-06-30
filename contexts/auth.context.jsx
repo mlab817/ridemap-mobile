@@ -34,26 +34,26 @@ export const AuthProvider = ({ children }) => {
         getDeviceId()
     }, [])
 
-    // handle login
-    useEffect(() => {
-        const loginWithDeviceId = async () => {
-            setLoading(true)
+    const loginWithDeviceId = async () => {
+        setLoading(true)
 
-            console.log(`deviceId from login: `, deviceId)
+        console.log(`deviceId from login: `, deviceId)
 
-            const loginSuccessful = await deviceAuthentication(deviceId)
+        const loginSuccessful = await deviceAuthentication(deviceId)
 
-            if (loginSuccessful) {
-                setIsAuthenticated(true)
-            }
-
-            setLoading(false)
+        if (loginSuccessful) {
+            setIsAuthenticated(true)
         }
 
+        setLoading(false)
+    }
+
+    // handle login
+    useEffect(() => {
         loginWithDeviceId()
     }, [deviceId])
 
-    const value = {deviceId, isAuthenticated, loading}
+    const value = {deviceId, isAuthenticated, loading, loginWithDeviceId}
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

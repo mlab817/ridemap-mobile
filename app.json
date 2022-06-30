@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "ridemap-qr",
+    "name": "Ridemap",
     "slug": "ridemap-qr",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -16,6 +17,16 @@
     },
     "ios": {
       "bundleIdentifier": "com.mlab817.ridemapqr"
-    }
+    },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+          "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ]
   }
 }
