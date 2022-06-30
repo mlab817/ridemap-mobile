@@ -50,12 +50,11 @@ const Kiosk = () => {
       }}>
         {
           filteredStations.map(({ id, name }) => (
-            <View style={{
+            <View key={id} style={{
               width: '50%',
               padding: 5
             }}>
               <TouchableOpacity
-                key={id}
                 style={{
                   alignItems: 'center',
                   backgroundColor: '#1434a3',
