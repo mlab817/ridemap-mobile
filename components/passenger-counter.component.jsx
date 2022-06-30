@@ -1,6 +1,6 @@
 import {Button, Keyboard, TextInput, TouchableWithoutFeedback, View} from "react-native";
 import Layout from "./layout.component";
-import {Fragment, useContext, useState} from "react";
+import {Fragment, useContext, useEffect, useState} from "react";
 import {StationContext} from "../contexts/station.context";
 import {submitCount} from "../utils";
 
@@ -11,19 +11,31 @@ const PassengerCounter = () => {
 
   const [passengersOut, setPassengersOut] = useState('')
 
+  const [disabled, setDisabled] = useState(true)
+
+  useEffect(() => {
+    if (passengersIn !== '' || passengersOut !== '') {
+      setDisabled(false)
+    } else {
+      setDisabled(true)
+    }
+  }, [passengersIn, passengersOut])
+
   const handleDismissKeyboard = () => Keyboard.dismiss()
 
   const resetCounts = () => {
-    console.log('resetting log')
     setPassengersIn('')
     setPassengersOut('')
   }
 
   const handleSubmit = async () => {
+    const numPassengersIn = passengersIn === '' ? 0 : parseInt(passengersIn)
+    const numPassengersOut = passengersOut === '' ? 0 : parseInt(passengersOut)
+
     const payload = {
       station_id: stationId,
-      passenger_in: parseInt(passengersIn ?? 0),
-      passenger_out: parseInt(passengersOut ?? 0),
+      passenger_in: numPassengersIn,
+      passenger_out: numPassengersOut,
       scanned_at: (new Date()).toLocaleString('en-US', {
         hour12: false
       })
@@ -75,7 +87,7 @@ const PassengerCounter = () => {
             }} value={passengersOut} placeholder="OUT" keyboardType="numeric" onChangeText={setPassengersOut} />
           </View>
 
-          <Button title="Submit" onPress={handleSubmit} />
+          <Button disabled={disabled} title="Submit" onPress={handleSubmit} />
 
         </View>
       </TouchableWithoutFeedback>
