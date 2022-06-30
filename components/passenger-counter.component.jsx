@@ -11,6 +11,8 @@ const PassengerCounter = () => {
 
   const [passengersOut, setPassengersOut] = useState('')
 
+  const handleDismissKeyboard = () => Keyboard.dismiss()
+
   const resetCounts = () => {
     console.log('resetting log')
     setPassengersIn('')
@@ -40,9 +42,9 @@ const PassengerCounter = () => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <Layout>
-        <Fragment>
+    <Layout>
+      <TouchableWithoutFeedback onPress={handleDismissKeyboard}>
+        <View>
 
           <View style={{
             flexDirection: 'row',
@@ -75,9 +77,9 @@ const PassengerCounter = () => {
 
           <Button title="Submit" onPress={handleSubmit} />
 
-        </Fragment>
-      </Layout>
-    </TouchableWithoutFeedback>
+        </View>
+      </TouchableWithoutFeedback>
+    </Layout>
   )
 }
 
