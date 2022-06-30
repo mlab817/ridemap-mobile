@@ -90,7 +90,7 @@ const FaceDetect = () => {
             borderWidth: 2,
             borderColor: 'yellow',
             position: 'absolute',
-            top: bounds.origin.y + 100, // add 100 for the top adjustment
+            top: bounds.origin.y + 0, // add 100 for the top adjustment
             left: bounds.origin.x,
             height: bounds.size.height,
             width: bounds.size.width

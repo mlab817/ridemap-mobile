@@ -172,7 +172,7 @@ export const submitFaces = async (facesToSubmit) => {
 
         return success
     } catch (e) {
-        console.log(`error in submitFaces: `, e)
+        console.log(`error in submitFaces: `, e.message)
     }
 }
 
