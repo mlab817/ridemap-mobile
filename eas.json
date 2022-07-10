@@ -19,6 +19,9 @@
       }
     },
     "production": {
+      "env": {
+        "ANDROID_SDK_ROOT": "/Users/lester/Library/Android/sdk"
+      },
       "distribution": "internal",
       "android": {
         "buildType": "apk",

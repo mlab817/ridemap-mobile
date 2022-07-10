@@ -1,13 +1,12 @@
-import {SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {useContext} from "react";
 import {StationContext} from "../contexts/station.context";
-import {ModeContext} from "../contexts/mode.context";
 import Banner from "./banner.component";
+import * as Application from 'expo-application'
+import Version from "./version.component";
 
 const Layout = ({ children }) => {
   const { stationId, setStationId, stations } = useContext(StationContext)
-
-  const { clearMode } = useContext(ModeContext)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -21,7 +20,7 @@ const Layout = ({ children }) => {
         justifyContent: 'center'
       }}>
         <Text style={{ marginTop: 5, fontSize: 24 }}>
-          {stations.find(station => station.id === stationId).name}
+          {stations && stations.find(station => station.id === stationId).name}
         </Text>
       </View>
 
@@ -29,13 +28,9 @@ const Layout = ({ children }) => {
         <TouchableOpacity onPress={() => setStationId(null)}>
           <Text>Change Station</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity style={{
-          marginLeft: 10
-        }} onPress={() => clearMode()}>
-          <Text>Change Mode</Text>
-        </TouchableOpacity>
       </View>
+
+      <Version />
     </SafeAreaView>
   )
 }

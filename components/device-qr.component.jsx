@@ -1,9 +1,11 @@
 import {Alert, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
 import { useContext, useRef } from "react";
-import {AuthContext} from "../contexts/auth.context";
+import { AuthContext } from "../contexts/auth.context";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import ViewShot from "react-native-view-shot";
 import * as MediaLibrary from 'expo-media-library'
+import Version from "./version.component";
+import Banner from "./banner.component";
 
 const DeviceQr = () => {
   const { deviceId, loginWithDeviceId } = useContext(AuthContext)
@@ -35,78 +37,85 @@ const DeviceQr = () => {
   }
 
   return (
-    <SafeAreaView style={{
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center'
+    <View style={{
+      flex: 1
     }}>
-      <Text style={{
-        fontSize: 20
-      }}>DEVICE NOT REGISTERED</Text>
-
-      <ViewShot ref={qr} style={{
-        padding: 10,
-        backgroundColor: '#ffffff',
-        alignItems: 'center'
-      }} options={{
-        format: 'png',
-        quality: 1
+      <View style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
       }}>
-        <Image style={{
-          marginBottom: 10,
-          marginTop: 10,
-          height: 256,
-          width: 256
-        }} source={{
-          uri:`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${deviceId}`
-        }} />
+        <Banner />
 
         <Text style={{
-          marginTop: 10
-        }}>{deviceId}</Text>
+          fontSize: 20
+        }}>DEVICE NOT REGISTERED</Text>
 
-      </ViewShot>
-
-      <Text style={{
-        marginTop: 30
-      }}>Provide this device ID to LTFRB PUVSC PIU IT Unit</Text>
-
-      <View style={{
-        flexDirection: 'row'
-      }}>
-        <TouchableOpacity style={{
-          borderWidth: 0.5,
+        <ViewShot ref={qr} style={{
           padding: 10,
-          borderRadius: 5,
-          alignItems: 'center',
-          marginTop: 30,
-          borderColor: '#d4d4d4',
-          width: 90
-        }} onPress={takeScreenshot}>
-          <AntDesign name="download" size={30} color="#000000" />
+          backgroundColor: '#ffffff',
+          alignItems: 'center'
+        }} options={{
+          format: 'png',
+          quality: 1
+        }}>
+          <Image style={{
+            marginBottom: 10,
+            marginTop: 10,
+            height: 256,
+            width: 256
+          }} source={{
+            uri:`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${deviceId}`
+          }} />
+
           <Text style={{
             marginTop: 10
-          }}>Download</Text>
-        </TouchableOpacity>
+          }}>{deviceId}</Text>
 
-        <TouchableOpacity style={{
-          borderWidth: 0.5,
-          padding: 10,
-          borderRadius: 5,
-          alignItems: 'center',
-          marginTop: 30,
-          borderColor: '#d4d4d4',
-          width: 90,
-          marginLeft: 30
-        }} onPress={retryLogin}>
-          <AntDesign name="reload1" size={30} color="#000000" />
-          <Text style={{
-            marginTop: 10
-          }}>Retry</Text>
-        </TouchableOpacity>
+        </ViewShot>
+
+        <Text style={{
+          marginTop: 30
+        }}>Provide this device ID to LTFRB PUVSC PIU IT Unit</Text>
+
+        <View style={{
+          flexDirection: 'row'
+        }}>
+          <TouchableOpacity style={{
+            borderWidth: 0.5,
+            padding: 10,
+            borderRadius: 5,
+            alignItems: 'center',
+            marginTop: 30,
+            borderColor: '#d4d4d4',
+            width: 90
+          }} onPress={takeScreenshot}>
+            <AntDesign name="download" size={30} color="#000000" />
+            <Text style={{
+              marginTop: 10
+            }}>Download</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={{
+            borderWidth: 0.5,
+            padding: 10,
+            borderRadius: 5,
+            alignItems: 'center',
+            marginTop: 30,
+            borderColor: '#d4d4d4',
+            width: 90,
+            marginLeft: 30
+          }} onPress={retryLogin}>
+            <AntDesign name="reload1" size={30} color="#000000" />
+            <Text style={{
+              marginTop: 10
+            }}>Retry</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
-    </SafeAreaView>
+      <Version />
+    </View>
   )
 }
 

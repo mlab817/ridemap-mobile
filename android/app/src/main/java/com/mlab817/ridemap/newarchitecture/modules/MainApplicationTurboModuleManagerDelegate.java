@@ -1,4 +1,4 @@
-package com.mlab817.ridemapqr.newarchitecture.modules;
+package com.mlab817.ridemap.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

@@ -1,4 +1,4 @@
-package com.mlab817.ridemapqr.newarchitecture.components;
+package com.mlab817.ridemap.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
