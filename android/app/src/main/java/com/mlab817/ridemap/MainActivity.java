@@ -1,4 +1,4 @@
-package com.mlab817.ridemapqr;
+package com.mlab817.ridemap;
 
 import android.os.Build;
 import android.os.Bundle;

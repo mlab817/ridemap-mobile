@@ -319,8 +319,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mlab817.ridemapqr";
-				PRODUCT_NAME = "ridemapqr";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mlab817.ridemap";
+				PRODUCT_NAME = "Ridemap";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -344,8 +344,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mlab817.ridemapqr";
-				PRODUCT_NAME = "ridemapqr";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mlab817.ridemap";
+				PRODUCT_NAME = "Ridemap";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				TARGETED_DEVICE_FAMILY = "1";
