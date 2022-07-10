@@ -16,7 +16,6 @@
     "expo-application": "~4.1.0",
     "expo-barcode-scanner": "~11.3.0",
     "expo-camera": "~12.2.0",
-    "expo-face-detector": "~11.2.0",
     "expo-media-library": "~14.1.0",
     "expo-secure-store": "~11.2.0",
     "expo-splash-screen": "~0.15.1",

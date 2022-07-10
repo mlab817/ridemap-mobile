@@ -18,7 +18,7 @@ const QrScanner = () => {
 
   const [type, setType] = useState(CameraType.back);
 
-  const { stationId, stations, setStationId } = useContext(StationContext)
+  const { stationId } = useContext(StationContext)
 
   const { scans, addScan, handleSubmitData } = useContext(ScansContext)
 
@@ -101,7 +101,13 @@ const QrScanner = () => {
         <Text>
           QRs scanned: {scans.length}
         </Text>
+      </View>
 
+      <View style={{
+        justifyContent: 'center',
+        flexDirection: 'row',
+        marginTop: 20
+      }}>
         <TouchableOpacity disabled={!scans.length} onPress={() => handleSubmitData()}>
           <Text style={{
             marginLeft: 20
